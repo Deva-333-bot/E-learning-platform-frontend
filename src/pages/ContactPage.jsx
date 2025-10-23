@@ -1,77 +1,72 @@
- import React, { useState } from "react";
+ import React from "react";
 
 function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Contact Form Submitted:", formData);
-    alert("Thank you for contacting us!");
-    setFormData({ name: "", email: "", message: "" });
-  };
-
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* ✅ Navbar removed because it's already global in AppRoutes */}
+    <div className="min-h-screen bg-gray-50 flex flex-col justify-center px-6 py-16">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        
+        {/* 🌟 Left Section — Contact Info + Form */}
+        <div>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            Get in Touch
+          </h1>
+          <p className="text-gray-600 mb-8">
+            Have questions, feedback, or want to collaborate with TechRica?
+            Fill out the form and we’ll get back to you as soon as possible.
+          </p>
 
-      <div className="max-w-4xl mx-auto px-6 py-20">
-        <h1 className="text-4xl font-bold text-primary mb-6 text-center">Contact Us</h1>
-        <p className="text-gray-700 mb-12 text-center">
-          Have questions or need help? Fill out the form below and we’ll get back to you.
-        </p>
+          {/* Contact Form */}
+          <form className="space-y-6">
+            <div>
+              <label className="block text-sm font-medium text-gray-700">
+                Full Name
+              </label>
+              <input
+                type="text"
+                placeholder="Enter your name"
+                className="w-full px-4 py-3 mt-1 border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              />
+            </div>
 
-        <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-md">
-          <div className="mb-6">
-            <label className="block text-gray-700 font-semibold mb-2">Name</label>
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-              required
-            />
-          </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700">
+                Email Address
+              </label>
+              <input
+                type="email"
+                placeholder="you@example.com"
+                className="w-full px-4 py-3 mt-1 border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              />
+            </div>
 
-          <div className="mb-6">
-            <label className="block text-gray-700 font-semibold mb-2">Email</label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-              required
-            />
-          </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700">
+                Message
+              </label>
+              <textarea
+                rows="4"
+                placeholder="Write your message..."
+                className="w-full px-4 py-3 mt-1 border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              ></textarea>
+            </div>
 
-          <div className="mb-6">
-            <label className="block text-gray-700 font-semibold mb-2">Message</label>
-            <textarea
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              rows="5"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-              required
-            ></textarea>
-          </div>
+            <button
+              type="submit"
+              className="w-full bg-indigo-600 text-white py-3 rounded-xl hover:bg-indigo-700 transition-all"
+            >
+              Send Message
+            </button>
+          </form>
+        </div>
 
-          <button
-            type="submit"
-            className="bg-primary text-white px-6 py-3 rounded-lg hover:bg-green-700 transition"
-          >
-            Send Message
-          </button>
-        </form>
+        {/* 🌈 Right Section — Illustration or Info */}
+        <div className="hidden md:block">
+          <img
+            src="https://cdn.dribbble.com/users/2113370/screenshots/14513915/media/ed0c28a9a5848b58e930cc2c64b78d28.png"
+            alt="Contact illustration"
+            className="w-full rounded-2xl shadow-lg"
+          />
+        </div>
       </div>
     </div>
   );
